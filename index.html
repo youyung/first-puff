@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第一口之前｜菸檳教育互動課程</title>
+<meta name="description" content="國一健康教育菸檳防制互動課程：手機模擬遊戲、學習單與教師資源。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --bg:#F2F7F5; --paper:#FFFFFF; --ink:#173038; --muted:#56707A; --line:#D6E5E2;
+  --accent:#0C7A84; --accent-dk:#095F67; --soft:#DCEFEE; --gold:#E9A82A; --gold-soft:#FCEFD2; --warn:#D2523C;
+  --display:"Huninn","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.7}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.3;text-wrap:balance}
+p{margin:0}
+.in{max-width:1040px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .in{display:flex;align-items:center;gap:18px;min-height:60px;flex-wrap:wrap}
+.logo{font-family:var(--display);font-size:22px;text-decoration:none;color:var(--ink);margin-right:auto}
+.nav a.l{text-decoration:none;color:var(--muted);font-size:15px;font-weight:500}
+.nav a.l:hover{color:var(--accent)}
+
+/* hero */
+.hero{background:linear-gradient(170deg,#7CC6C2 0%,#BFE3D0 55%,#F6D9A8 100%);padding-block:56px 64px;overflow:hidden}
+.hero .in{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.eyebrow{font-size:14px;letter-spacing:.16em;font-weight:700;color:var(--accent-dk)}
+.hero h1{font-size:clamp(46px,8vw,84px);letter-spacing:.04em;margin:8px 0 14px}
+.hero .lead{font-size:clamp(17px,2.2vw,20px);max-width:30em}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:16px 28px;font:inherit;font-size:19px;font-weight:700;text-decoration:none;cursor:pointer;min-height:58px}
+.btn.main{background:var(--accent);color:#fff;box-shadow:0 8px 20px rgba(12,122,132,.3)}
+.btn.main:hover{background:var(--accent-dk)}
+.btn.sub{background:rgba(255,255,255,.75);color:var(--ink)}
+.meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px;font-size:14px;color:#2E4A52}
+.meta span{background:rgba(255,255,255,.55);border-radius:999px;padding:4px 12px}
+.phone{justify-self:center;width:min(260px,100%)}
+.phone svg{width:100%;height:auto;display:block;filter:drop-shadow(0 18px 30px rgba(10,40,45,.25))}
+
+/* sections */
+section.s{padding-block:64px}
+.sh{display:grid;gap:8px;margin-bottom:28px}
+.sh h2{font-size:clamp(28px,4vw,38px)}
+.sh p{color:var(--muted);max-width:40em}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:st;list-style:none;padding:0;margin:0}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;display:grid;gap:6px;counter-increment:st}
+.steps li::before{content:counter(st);font-family:var(--display);font-size:34px;color:var(--accent);line-height:1}
+.steps h3{font-size:21px}
+.steps p{color:var(--muted);font-size:15.5px}
+
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:22px}
+.day{border-top:4px solid var(--accent);background:var(--paper);border-radius:0 0 14px 14px;padding:14px;display:grid;gap:4px;font-size:15px}
+.day b{font-family:var(--display);font-weight:400;font-size:18px}
+.day span{color:var(--muted)}
+
+.alt{background:var(--paper);border-block:1px solid var(--line)}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{border:1px solid var(--line);border-radius:18px;padding:24px;display:grid;gap:10px;align-content:start;background:var(--bg)}
+.card h3{font-size:22px}
+.card p{color:var(--muted);font-size:15.5px}
+.card .btn{justify-self:start;font-size:16px;padding:12px 20px;min-height:48px}
+
+.qr{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+#qrbox{width:168px;height:168px;background:#fff;border-radius:12px;padding:10px;border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);font-size:13px;text-align:center}
+#qrbox img,#qrbox canvas{width:100%!important;height:auto!important}
+.url{font-family:ui-monospace,Menlo,monospace;font-size:14px;background:var(--soft);padding:6px 10px;border-radius:8px;word-break:break-all;display:inline-block}
+
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15.5px;background:var(--paper);border-radius:14px;overflow:hidden}
+th,td{border-bottom:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}
+th{white-space:nowrap;color:var(--accent);font-variant-numeric:tabular-nums;width:6.5em}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.grid2 h3{font-size:20px;margin-bottom:10px}
+ol.q,ul.r{margin:0;padding-left:1.3em;display:grid;gap:8px}
+.note{background:var(--gold-soft);border-radius:14px;padding:16px 18px;font-size:15.5px;display:grid;gap:6px}
+
+.help{background:var(--ink);color:#E4F1EF}
+.help .in{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;padding-block:44px}
+.help h3{font-size:18px;color:#8FD9DE;margin-bottom:4px}
+.help b{font-size:24px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.help p{font-size:15px;color:#B9CFD3}
+footer{padding-block:24px;font-size:13px;color:var(--muted)}
+
+@media (max-width:820px){
+  .hero .in{grid-template-columns:1fr}
+  .phone{display:none}
+  .steps,.cards,.grid2,.help .in{grid-template-columns:1fr}
+  .days{grid-template-columns:1fr 1fr}
+  .qr{grid-template-columns:1fr}
+  .nav a.l{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="in">
+  <a class="logo" href="#top">第一口之前</a>
+  <a class="l" href="#how">怎麼玩</a>
+  <a class="l" href="#student">學生區</a>
+  <a class="l" href="#teacher">教師區</a>
+  <a class="btn main" href="game.html" style="font-size:15px;padding:8px 18px;min-height:40px">開始遊戲</a>
+</div></nav>
+
+<header class="hero" id="top"><div class="in">
+  <div>
+    <p class="eyebrow">國一健康教育・菸檳防制互動課程</p>
+    <h1>第一口之前</h1>
+    <p class="lead">長得像螢光筆的電子煙、說能提神的檳榔、私訊推銷的陌生帳號。用一支模擬手機度過戶外教育那一週，每個回覆都會改變故事的結局。</p>
+    <div class="cta">
+      <a class="btn main" href="game.html">開始遊戲</a>
+      <a class="btn sub" href="worksheet.html">下載學習單</a>
+    </div>
+    <div class="meta"><span>約 20–25 分鐘</span><span>平板、電腦、手機都能玩</span><span>免登入・免安裝</span></div>
+  </div>
+  <div class="phone" aria-hidden="true">
+    <svg viewBox="0 0 260 500">
+      <rect x="4" y="4" width="252" height="492" rx="40" fill="#14181B"/>
+      <rect x="14" y="14" width="232" height="472" rx="31" fill="#CFE0E8"/>
+      <rect x="14" y="14" width="232" height="64" rx="31" fill="#fff"/><rect x="14" y="50" width="232" height="28" fill="#fff"/>
+      <circle cx="46" cy="56" r="14" fill="#FCE7C2"/><circle cx="46" cy="58" r="8" fill="#F3CBA5"/>
+      <text x="68" y="62" font-size="15" font-weight="700" fill="#1B2E35" font-family="Noto Sans TC,sans-serif">阿哲</text>
+      <rect x="26" y="96" width="150" height="38" rx="16" fill="#fff"/><text x="40" y="120" font-size="14" fill="#1B2E35" font-family="Noto Sans TC,sans-serif">欸 給你看這個</text>
+      <rect x="26" y="142" width="160" height="104" rx="14" fill="#E8D7C0"/>
+      <rect x="54" y="186" width="112" height="22" rx="9" fill="#F08BB5"/><rect x="40" y="190" width="18" height="14" rx="5" fill="#F4F4F4"/><rect x="112" y="191" width="22" height="12" rx="3" fill="#5B3B7A"/>
+      <rect x="26" y="254" width="168" height="38" rx="16" fill="#fff"/><text x="40" y="278" font-size="14" fill="#1B2E35" font-family="Noto Sans TC,sans-serif">你猜這是什麼？</text>
+      <rect x="110" y="304" width="124" height="38" rx="16" fill="#A8E27D"/><text x="124" y="328" font-size="14" fill="#1B2E35" font-family="Noto Sans TC,sans-serif">螢光筆…嗎？</text>
+      <rect x="14" y="380" width="232" height="106" fill="#fff"/><rect x="14" y="440" width="232" height="46" rx="31" fill="#fff"/>
+      <rect x="26" y="394" width="208" height="34" rx="14" fill="#fff" stroke="#0C7A84" stroke-width="2"/><text x="40" y="416" font-size="13" fill="#0C7A84" font-family="Noto Sans TC,sans-serif">這是…電子煙嗎？</text>
+      <rect x="26" y="436" width="208" height="34" rx="14" fill="#fff" stroke="#0C7A84" stroke-width="2"/><text x="40" y="458" font-size="13" fill="#0C7A84" font-family="Noto Sans TC,sans-serif">看不出來欸</text>
+    </svg>
+  </div>
+</div></header>
+
+<main>
+<section class="s" id="how"><div class="in">
+  <div class="sh"><h2>怎麼玩</h2><p>你是 707 班的新生。接下來的五天，手機會收到朋友、班導、家人，還有陌生帳號的訊息。</p></div>
+  <ol class="steps">
+    <li><h3>取一個暱稱</h3><p>用暱稱就好，不要輸入真實姓名。建議戴耳機，或在右上角把音效關掉。</p></li>
+    <li><h3>回覆訊息、找線索</h3><p>放大照片找出偽裝、點出廣告裡的話術、上網查證，還要在 10 秒內做出決定。</p></li>
+    <li><h3>收集 12 張知識卡</h3><p>每學到一件事就會得到一張卡，結局後可以在手機的「手冊」App 裡複習。</p></li>
+  </ol>
+  <div class="days">
+    <div class="day"><b>週一</b><span>阿哲傳來一支「螢光筆」</span></div>
+    <div class="day"><b>週二</b><span>網紅廣告與班導小考</span></div>
+    <div class="day"><b>週三</b><span>陌生私訊、補習班與阿公</span></div>
+    <div class="day"><b>週四</b><span>戶外教育的晚上</span></div>
+    <div class="day"><b>週五</b><span>阿哲的心裡話</span></div>
+  </div>
+</div></section>
+
+<section class="s alt" id="student"><div class="in">
+  <div class="sh"><h2>學生區</h2><p>先玩遊戲，再完成學習單。</p></div>
+  <div class="cards">
+    <div class="card"><h3>互動遊戲</h3><p>在平板上玩效果最好，直放或橫放都可以。中途重新整理會從頭開始。</p><a class="btn main" href="game.html">開始遊戲</a></div>
+    <div class="card"><h3>課後學習單</h3><p>寫下你在遊戲中學到的事，還有你自己的拒絕台詞。可以列印，也可以在平板上看著回答。</p><a class="btn main" href="worksheet.html">打開學習單</a></div>
+  </div>
+</div></section>
+
+<section class="s" id="teacher"><div class="in">
+  <div class="sh"><h2>教師區</h2><p>一節課 45 分鐘的建議流程、討論題與參考資源。</p></div>
+
+  <div class="card" style="background:var(--paper);margin-bottom:28px">
+    <div class="qr">
+      <div id="qrbox">QR Code 產生中…</div>
+      <div style="display:grid;gap:8px">
+        <h3>讓學生用平板掃描</h3>
+        <p>上課時投影這個 QR Code，學生掃描後直接進入遊戲。</p>
+        <span class="url" id="gurl"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="background:var(--paper);margin-bottom:28px">
+    <div style="display:grid;gap:8px">
+      <h3>教師後台</h3>
+      <p>查看每位學生的完成狀況、遊戲中的選擇與小考成績，可以依班級篩選並匯出 CSV。需要先設定 Google 試算表（請見 README）。</p>
+      <a class="btn main" href="dashboard.html" style="justify-self:start;font-size:16px;padding:12px 20px;min-height:48px">打開教師後台</a>
+    </div>
+  </div>
+
+  <h3 style="font-size:22px;margin-bottom:12px">建議流程（45 分鐘）</h3>
+  <div class="tw"><table>
+    <tr><th>0–5 分</th><td>引起動機：「你有沒有看過長得像文具、飲料杯的東西，其實是電子煙？」先不揭曉答案。</td></tr>
+    <tr><th>5–30 分</th><td>學生個人或兩人一組用平板遊玩。可以先投影示範第 1 天的前幾則訊息。</td></tr>
+    <tr><th>30–40 分</th><td>全班討論：分享戶外教育那一晚的選擇，以及最後怎麼回覆阿哲。</td></tr>
+    <tr><th>40–45 分</th><td>發下學習單，寫下自己的拒絕台詞，未完成的部分當作回家作業。</td></tr>
+  </table></div>
+
+  <div class="grid2" style="margin-top:32px">
+    <div>
+      <h3>討論題</h3>
+      <ol class="q">
+        <li>電子煙最常是「認識的人」免費給的。為什麼拒絕阿哲，比封鎖果果小舖還難？</li>
+        <li>你拒絕之後，阿哲和宇恩有什麼反應？拒絕一定會失去朋友嗎？</li>
+        <li>阿公嚼檳榔、嘴巴破了很久。我們可以怎麼關心家人，而不是責罵？</li>
+        <li>廣告裡哪一句話最容易讓你心動？為什麼業者要這樣寫？</li>
+      </ol>
+    </div>
+    <div>
+      <h3>關卡與知識對照</h3>
+      <ul class="r">
+        <li><b>週一</b>：電子煙偽裝外型、尼古丁成癮</li>
+        <li><b>週二</b>：行銷話術、資訊查證、電子煙 vs 加熱菸</li>
+        <li><b>週三</b>：網路推銷與法規、檳榔一級致癌物、口腔癌警訊</li>
+        <li><b>週四</b>：限時拒絕、拒絕技巧</li>
+        <li><b>週五</b>：多數人不用、陪朋友找大人</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:28px">
+    <b>使用提醒</b>
+    <span>班上可能有學生的家人抽菸或嚼檳榔。討論時請聚焦在「關心健康」，避免把使用者說成壞人。</span>
+    <span>遊戲數據以國健署 2025 年調查為準；「持有電子煙」罰則目前為修法草案，遊戲只呈現現行的使用罰則。</span>
+  </div>
+
+  <div class="grid2" style="margin-top:32px">
+    <div>
+      <h3>延伸資源</h3>
+      <ul class="r">
+        <li><a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=41" target="_blank" rel="noopener">國民健康署・菸害防制專區</a></li>
+        <li><a href="https://health99.hpa.gov.tw/health99/ContentSection?siteId=1&amp;nodeId=612" target="_blank" rel="noopener">健康九九+・菸害防制館</a></li>
+        <li><a href="https://health99.hpa.gov.tw/health99/HealthEducation?siteId=1&amp;nodeId=12" target="_blank" rel="noopener">健康九九+・衛教資源專區</a></li>
+        <li>國民健康署〈電子煙與加熱菸外觀辨識方式及說明〉簡報（115 年 5 月）</li>
+      </ul>
+    </div>
+    <div>
+      <h3>資料來源</h3>
+      <ul class="r">
+        <li><a href="https://www.peoplenews.tw/articles/healthcare/51621" target="_blank" rel="noopener">國健署 114 年青少年吸菸行為調查</a></li>
+        <li><a href="https://cna.com.tw/news/ahel/202303210365.aspx" target="_blank" rel="noopener">菸害防制法 2023/3/22 修法重點</a></li>
+        <li><a href="https://cybsbox.cy.gov.tw/CYBSBoxSSL/edoc/download/53469" target="_blank" rel="noopener">檳榔、菸、酒與口腔癌風險倍數（監察院）</a></li>
+        <li><a href="https://mohw.gov.tw/cp-16-64191-1.html" target="_blank" rel="noopener">口腔癌警訊與篩檢（衛福部）</a></li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<section class="help"><div class="in">
+  <div><h3>想幫家人戒菸</h3><b>0800-636363</b><p>國健署戒菸專線，免費</p></div>
+  <div><h3>想幫家人戒檳榔</h3><p>可以到醫院的戒檳門診或衛生所詢問。30 歲以上嚼檳榔或吸菸的人，每 2 年可免費做口腔黏膜檢查。</p></div>
+  <div><h3>遇到壓力或推銷</h3><p>告訴導師、輔導老師或家長。陌生帳號推銷：截圖、封鎖、檢舉。</p></div>
+</div></section>
+
+<footer><div class="in">「第一口之前」菸檳教育互動課程・內容僅供教育使用</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function(){
+  var url=new URL("game.html",location.href).href;
+  document.getElementById("gurl").textContent=url;
+  var box=document.getElementById("qrbox");
+  if(location.protocol==="file:"){box.textContent="上線到 GitHub Pages 後，這裡會顯示 QR Code";return}
+  try{box.textContent="";new QRCode(box,{text:url,width:300,height:300,colorDark:"#173038",colorLight:"#ffffff"})}
+  catch(e){box.textContent="QR Code 無法產生，請直接分享上方網址"}
+})();
+</script>
+</body>
+</html>
