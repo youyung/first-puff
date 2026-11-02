@@ -75,13 +75,14 @@ a.sbtn{color:var(--ink)}
 .home{height:100%;background:linear-gradient(170deg,#7CC6C2 0%,#BFE3D0 48%,#F6D9A8 100%);display:flex;flex-direction:column;align-items:center;padding:56px 18px 26px;color:#173038}
 .clock{font-family:var(--display);font-size:66px;line-height:1.1}
 .date{font-size:15px;font-weight:500}
-.apps{margin-top:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%;background:rgba(255,255,255,.4);border-radius:26px;padding:14px 8px}
-.app{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px;color:#173038;position:relative;padding:0}
-.ic{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;box-shadow:0 3px 8px rgba(0,0,0,.12)}
-.ic svg{width:32px;height:32px}
-.badge{position:absolute;top:-5px;right:2px;background:#E5413B;color:#fff;font-size:12px;min-width:20px;height:20px;border-radius:10px;display:grid;place-items:center;padding:0 5px;font-weight:700;line-height:1}
+.apps{margin-top:auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;width:100%;padding:0 0 10px;background:none}
+.app{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6);position:relative;padding:0;min-width:0}
+.ic{width:min(56px,17cqw);aspect-ratio:1;height:auto;border-radius:24%;display:grid;place-items:center;box-shadow:0 4px 10px rgba(0,0,0,.25)}
+.ic svg{width:57%;height:57%}
+.badge{position:absolute;top:-5px;right:calc(50% - min(28px,8.5cqw) - 6px);background:#E5413B;color:#fff;font-size:12px;min-width:20px;height:20px;border-radius:10px;display:grid;place-items:center;padding:0 5px;font-weight:700;line-height:1}
 
-.hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);background:#173038;color:#fff;padding:8px 16px;border-radius:999px;font-size:14px;z-index:15;white-space:nowrap;animation:bob 1.6s ease-in-out infinite;pointer-events:none}
+.hint.up{bottom:auto;top:46%}
+.hint{position:absolute;bottom:22px;width:max-content;max-width:calc(100% - 24px);white-space:normal;text-align:center;left:50%;transform:translateX(-50%);background:#173038;color:#fff;padding:8px 16px;border-radius:999px;font-size:14px;z-index:15;animation:bob 1.6s ease-in-out infinite;pointer-events:none}
 .banner{position:absolute;top:34px;left:8px;right:8px;z-index:16;background:rgba(255,255,255,.98);border-radius:18px;box-shadow:0 10px 26px rgba(0,0,0,.2);display:flex;gap:10px;align-items:center;padding:10px 12px;text-align:left;border:0;animation:drop .35s ease}
 .banner .av{width:38px;height:38px}
 .banner .bt{min-width:0;flex:1}
@@ -681,6 +682,7 @@ function setTime(day,t){document.getElementById("clk").textContent=t;S.time=t;S.
 
 /* ================= 導覽 ================= */
 function go(view,arg){
+  if(hintEl)hintEl.classList.toggle("up",view==="home");
   S.view=view;S.chat=view==="chat"?arg:null;
   if(banEl&&banEl._go&&banEl._go[0]===view&&banEl._go[1]===arg){banEl.remove();banEl=null}
   ({home:rHome,list:rList,chat:()=>rChat(arg),feed:rFeed,search:rSearch,book:rBook})[view]();
@@ -697,7 +699,7 @@ V.addEventListener("click",e=>{
   const b=e.target.closest("[data-go]");if(b){const [v,a]=b.dataset.go.split(":");go(v,a);return}
   if(e.target.closest(".msgs")&&skipFn)skipFn();
 });
-function hint(t,k){if(hintEl){hintEl.remove();hintEl=null}if(t){hintEl=document.createElement("div");hintEl.className="hint";hintEl.textContent=t;hintEl._k=k;SCR.appendChild(hintEl)}}
+function hint(t,k){if(hintEl){hintEl.remove();hintEl=null}if(t){hintEl=document.createElement("div");hintEl.className="hint"+(S.view==="home"?" up":"");hintEl.textContent=t;hintEl._k=k;SCR.appendChild(hintEl)}}
 function banner(o){
   if(banEl)banEl.remove();
   const b=document.createElement("button");b.className="banner";b.type="button";b._go=o.go;
@@ -1136,7 +1138,7 @@ function start(){
         <div><label for="seat">座號</label><select id="seat"><option value="">選擇</option>${Array.from({length:CFG.MAX_SEAT},(_,i)=>`<option>${i+1}</option>`).join("")}</select></div>
       </div>
       <div class="st-field"><label for="nick">遊戲裡的名稱</label><input id="nick" maxlength="6" placeholder="例如：小安" autocomplete="off"></div>
-      <p class="note" id="snote">${CFG.API_URL?"班級、座號和遊戲結果會傳給老師；請真實姓名。":"請用真實姓名。"}約 20 分鐘，建議戴耳機。</p>
+      <p class="note" id="snote">${CFG.API_URL?"班級、座號和遊戲結果會傳給老師；請用真實姓名。":"請用真實姓名。"}約 20 分鐘，建議戴耳機。</p>
       <button class="pbtn" id="go" type="button">開始</button>
     </div></div>`;
   document.getElementById("go").onclick=()=>{
@@ -1178,5 +1180,6 @@ resolveImages().then(start,start);
 })();
 </script>
 
+  
 </body>
 </html>
