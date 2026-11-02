@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>誘惑攻防戰</title>
+<title>誘惑的抵擋</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
@@ -264,20 +264,7 @@ a.sbtn{color:var(--ink)}
 .st-hero .lab{color:#1D5C63}
 .st-hero h2{font-family:var(--display);font-size:clamp(30px,11cqw,46px);line-height:1.1;letter-spacing:.03em;text-shadow:0 2px 0 rgba(255,255,255,.6)}
 .st-notes{display:grid;gap:8px;margin-top:4px}
-
-.st-n{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  background:transparent;
-  backdrop-filter:none;
-  -webkit-backdrop-filter:none;
-  border-radius:0;
-  padding:8px 12px;
-  box-shadow:none;
-  animation:floaty 4s ease-in-out infinite;
-}
-
+.st-n{display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-radius:16px;padding:8px 12px;box-shadow:0 6px 18px rgba(30,60,70,.12);animation:floaty 4s ease-in-out infinite}
 .st-n:nth-child(2){margin-left:22px;animation-delay:-2s;opacity:.92}
 .st-n .av{width:32px;height:32px}
 .st-n b{display:block;font-size:13px}
@@ -379,8 +366,8 @@ a.sbtn{color:var(--ink)}
 <div class="wrap">
   <aside class="side">
     <div class="brand">
-      <h1>誘惑攻防戰</h1>
-      <p>菸檳誘惑模擬器・國中資訊融合健康教育</p>
+      <h1>誘惑的抵擋</h1>
+      <p>菸檳誘惑模擬器・國一健康教育</p>
     </div>
     <section class="pcard">
       <h2>你的狀態</h2>
@@ -1130,17 +1117,17 @@ function start(){
   setTime("","21:30");S.view="start";
   V.innerHTML=`<div class="start">
     <div class="st-hero ${imgURL("start")?"has-img":""}"${bgStyle("start")}>
-      <span class="lab">國中資訊融合健康教育・互動模擬</span>
+      <span class="lab">國一健康教育・互動模擬</span>
       <h2>誘惑的抵擋</h2>
     </div>
     <div class="st-sheet">
-      <p class="sub">你是快樂國中的學生，接下來一週，手機會收到很多訊息，每一個回覆都會改變故事的走向。</p>
+      <p class="sub">你是 707 班的新生。接下來一週，手機會收到很多訊息，每一個回覆都會改變故事的走向。</p>
       <div class="srow2">
         <div><label for="cls">班級</label>${CFG.CLASSES.length?`<select id="cls"><option value="">選擇</option>${CFG.CLASSES.map(c=>`<option>${c}</option>`).join("")}</select>`:`<input id="cls" maxlength="8" placeholder="例如 701" inputmode="numeric" autocomplete="off">`}</div>
         <div><label for="seat">座號</label><select id="seat"><option value="">選擇</option>${Array.from({length:CFG.MAX_SEAT},(_,i)=>`<option>${i+1}</option>`).join("")}</select></div>
       </div>
-      <div class="st-field"><label for="nick">遊戲裡的名稱</label><input id="nick" maxlength="6" placeholder="例如：小安" autocomplete="off"></div>
-      <p class="note" id="snote">${CFG.API_URL?"班級、座號和遊戲結果會傳給老師；請用真實姓名。":"請用真實姓名。"}約 20 分鐘，建議戴耳機。</p>
+      <div class="st-field"><label for="nick">遊戲裡的暱稱</label><input id="nick" maxlength="6" placeholder="例如：小安" autocomplete="off"></div>
+      <p class="note" id="snote">${CFG.API_URL?"班級、座號和遊戲結果會傳給老師；暱稱請不要用真實姓名。":"暱稱請不要用真實姓名。"}約 20 分鐘，建議戴耳機。</p>
       <button class="pbtn" id="go" type="button">開始</button>
     </div></div>`;
   document.getElementById("go").onclick=()=>{
