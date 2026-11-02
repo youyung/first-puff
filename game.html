@@ -407,6 +407,7 @@ a.sbtn{color:var(--ink)}
     </div>
     <p>學生扮演 707 班的新生，用一支模擬手機度過「戶外教育」那一週：在聊天室回覆朋友、在動態裡找出廣告陷阱、上網查證、放大照片找線索、幫阿公看口腔警訊，最後在限時 10 秒內決定要不要吸「第一口」。選錯會看到可能的後果，並可以回到那一刻重選。全程約 20–25 分鐘。</p>
     <p>平板直放、橫放都能玩。頁面不需登入。若已設定後台，學生的班級、座號與遊戲結果會記錄到老師的 Google 試算表，可在「教師後台」頁查看；暱稱請學生不要用真名。</p>
+    <p id="imgCheck" style="background:var(--soft);border-radius:10px;padding:10px 12px;font-size:14px">圖片檢查中…</p>
     <h3>建議流程（45 分鐘）</h3>
     <div class="tw"><table>
       <tr><th>0–5 分</th><td>引起動機：「你有沒有看過長得像文具、飲料杯的東西，其實是電子煙？」</td></tr>
@@ -1159,20 +1160,36 @@ document.getElementById("tBtn").onclick=()=>{tov.hidden=false;document.getElemen
 document.getElementById("tClose").onclick=()=>{tov.hidden=true};
 tov.addEventListener("click",e=>{if(e.target===tov)tov.hidden=true});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")tov.hidden=true});
-/* 自動找圖片：images/ 資料夾或最外層都可以 */
-function tryImg(u){return new Promise(r=>{if(!u)return r(false);const im=new Image();const t=setTimeout(()=>r(false),5000);im.onload=()=>{clearTimeout(t);r(true)};im.onerror=()=>{clearTimeout(t);r(false)};im.src=u})}
-async function resolveOne(v){
-  if(!v)return "";
+/* 自動找圖片：images/ 資料夾或最外層都可以。
+   只有「確定找不到」（404）才改用內建插圖；圖片載入比較慢時，照樣使用你的圖片。 */
+const IMG_MISSING=[];
+const loadImg=u=>new Promise(r=>{const im=new Image();im.onload=()=>r(true);im.onerror=()=>r(false);im.src=u});
+const wait6=()=>new Promise(r=>setTimeout(()=>r("slow"),6000));
+function imgReport(){
+  const box=document.getElementById("imgCheck");if(!box)return;
+  const n=Object.keys(IMG).filter(k=>k!=="avatars"&&IMG[k]).length+Object.values(IMG.avatars).filter(Boolean).length;
+  box.innerHTML=IMG_MISSING.length?`<b style="color:var(--warn)">找不到 ${IMG_MISSING.length} 張圖片：</b>${IMG_MISSING.map(x=>x.replace(/[<>&]/g,"")).join("、")}。請確認 GitHub 上有這些檔案，而且檔名大小寫一模一樣。`:`圖片檢查：${n} 張自訂圖片都有找到。`;
+}
+async function resolveOne(v,set){
+  if(!v)return set("");
   v=String(v).trim();const base=v.split("/").pop();
   const cands=[...new Set([v,base,"images/"+base])];
-  for(const c of cands){if(await tryImg(c))return c}
-  console.warn("找不到圖片：",v);return "";
+  for(let i=0;i<cands.length;i++){
+    const p=loadImg(cands[i]);const r=await Promise.race([p,wait6()]);
+    if(r===true)return set(cands[i]);
+    if(r==="slow"){ /* 載入比較慢：先照樣用這張，背景繼續確認 */
+      set(cands[i]);
+      p.then(async ok=>{if(ok)return;for(const c of cands.slice(i+1)){if(await loadImg(c))return set(c)}set("");IMG_MISSING.push(v);imgReport()});
+      return;
+    }
+  }
+  set("");IMG_MISSING.push(v);
 }
 async function resolveImages(){
   const jobs=[];
-  Object.keys(IMG).forEach(k=>{if(k!=="avatars")jobs.push(resolveOne(IMG[k]).then(u=>IMG[k]=u))});
-  Object.keys(IMG.avatars).forEach(k=>jobs.push(resolveOne(IMG.avatars[k]).then(u=>IMG.avatars[k]=u)));
-  await Promise.all(jobs);
+  Object.keys(IMG).forEach(k=>{if(k!=="avatars")jobs.push(resolveOne(IMG[k],u=>IMG[k]=u))});
+  Object.keys(IMG.avatars).forEach(k=>jobs.push(resolveOne(IMG.avatars[k],u=>IMG.avatars[k]=u)));
+  await Promise.all(jobs);imgReport();
 }
 stats();
 V.innerHTML=`<div class="empty" style="padding-top:45%">載入中…</div>`;
@@ -1180,8 +1197,5 @@ resolveImages().then(start,start);
 })();
 </script>
 
-  
 </body>
 </html>
-
-
