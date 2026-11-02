@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>誘惑攻防戰</title>
+<title>誘惑的抵擋</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
@@ -75,14 +75,13 @@ a.sbtn{color:var(--ink)}
 .home{height:100%;background:linear-gradient(170deg,#7CC6C2 0%,#BFE3D0 48%,#F6D9A8 100%);display:flex;flex-direction:column;align-items:center;padding:56px 18px 26px;color:#173038}
 .clock{font-family:var(--display);font-size:66px;line-height:1.1}
 .date{font-size:15px;font-weight:500}
-.apps{margin-top:auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;width:100%;padding:0 0 10px;background:none}
-.app{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6);position:relative;padding:0;min-width:0}
-.ic{width:min(56px,17cqw);aspect-ratio:1;height:auto;border-radius:24%;display:grid;place-items:center;box-shadow:0 4px 10px rgba(0,0,0,.25)}
-.ic svg{width:57%;height:57%}
-.badge{position:absolute;top:-5px;right:calc(50% - min(28px,8.5cqw) - 6px);background:#E5413B;color:#fff;font-size:12px;min-width:20px;height:20px;border-radius:10px;display:grid;place-items:center;padding:0 5px;font-weight:700;line-height:1}
+.apps{margin-top:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%;background:rgba(255,255,255,.4);border-radius:26px;padding:14px 8px}
+.app{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px;color:#173038;position:relative;padding:0}
+.ic{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;box-shadow:0 3px 8px rgba(0,0,0,.12)}
+.ic svg{width:32px;height:32px}
+.badge{position:absolute;top:-5px;right:2px;background:#E5413B;color:#fff;font-size:12px;min-width:20px;height:20px;border-radius:10px;display:grid;place-items:center;padding:0 5px;font-weight:700;line-height:1}
 
-.hint.up{bottom:auto;top:46%}
-.hint{position:absolute;bottom:22px;width:max-content;max-width:calc(100% - 24px);white-space:normal;text-align:center;left:50%;transform:translateX(-50%);background:#173038;color:#fff;padding:8px 16px;border-radius:999px;font-size:14px;z-index:15;animation:bob 1.6s ease-in-out infinite;pointer-events:none}
+.hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);background:#173038;color:#fff;padding:8px 16px;border-radius:999px;font-size:14px;z-index:15;white-space:nowrap;animation:bob 1.6s ease-in-out infinite;pointer-events:none}
 .banner{position:absolute;top:34px;left:8px;right:8px;z-index:16;background:rgba(255,255,255,.98);border-radius:18px;box-shadow:0 10px 26px rgba(0,0,0,.2);display:flex;gap:10px;align-items:center;padding:10px 12px;text-align:left;border:0;animation:drop .35s ease}
 .banner .av{width:38px;height:38px}
 .banner .bt{min-width:0;flex:1}
@@ -367,8 +366,8 @@ a.sbtn{color:var(--ink)}
 <div class="wrap">
   <aside class="side">
     <div class="brand">
-      <h1>誘惑攻防戰</h1>
-      <p>菸檳誘惑模擬器・國中資訊融合健康教育</p>
+      <h1>誘惑的抵擋</h1>
+      <p>菸檳誘惑模擬器・國一健康教育</p>
     </div>
     <section class="pcard">
       <h2>你的狀態</h2>
@@ -405,8 +404,8 @@ a.sbtn{color:var(--ink)}
       <h2 id="tTitle">教師使用說明</h2>
       <button class="sbtn" id="tClose" type="button">關閉</button>
     </div>
-    <p>學生扮演自己班上的新生（開始時輸入的班級會出現在班級群組和劇情裡），用一支模擬手機度過「戶外教育」那一週：在聊天室回覆朋友、在動態裡找出廣告陷阱、上網查證、放大照片找線索、幫阿公看口腔警訊，最後在限時 10 秒內決定要不要吸「第一口」。選錯會看到可能的後果，並可以回到那一刻重選。全程約 20–25 分鐘。</p>
-    <p>平板直放、橫放都能玩。頁面不需登入。若已設定後台，學生的班級、座號與遊戲結果會記錄到老師的 Google 試算表，可在「教師後台」頁查看；學生會輸入真實姓名，請妥善保管試算表，學期結束後可自行刪除。</p>
+    <p>學生扮演 707 班的新生，用一支模擬手機度過「戶外教育」那一週：在聊天室回覆朋友、在動態裡找出廣告陷阱、上網查證、放大照片找線索、幫阿公看口腔警訊，最後在限時 10 秒內決定要不要吸「第一口」。選錯會看到可能的後果，並可以回到那一刻重選。全程約 20–25 分鐘。</p>
+    <p>平板直放、橫放都能玩。頁面不需登入。若已設定後台，學生的班級、座號與遊戲結果會記錄到老師的 Google 試算表，可在「教師後台」頁查看；暱稱請學生不要用真名。</p>
     <h3>建議流程（45 分鐘）</h3>
     <div class="tw"><table>
       <tr><th>0–5 分</th><td>引起動機：「你有沒有看過長得像文具、飲料杯的東西，其實是電子煙？」</td></tr>
@@ -621,17 +620,7 @@ const CARDS=[
 ];
 
 /* ================= 狀態 ================= */
-/* 把學生輸入的班級整理成統一格式：701、7年1班、七年一班、7-1 都會變成 701 */
-function normCls(v){
-  v=String(v||"").trim().replace(/\s/g,"");
-  const cn={"零":0,"〇":0,"一":1,"二":2,"兩":2,"三":3,"四":4,"五":5,"六":6,"七":7,"八":8,"九":9,"十":10};
-  const toN=t=>{if(/^\d+$/.test(t))return +t;if(t.length===1)return cn[t];if(t[0]==="十")return 10+(cn[t[1]]||0);if(t.length===2&&t[1]==="十")return cn[t[0]]*10;if(t.length===3&&t[1]==="十")return cn[t[0]]*10+cn[t[2]];return NaN};
-  let m=v.match(/^([0-9一二三四五六七八九]+)年級?([0-9一二三四五六七八九十〇零兩]+)班?$/)||v.match(/^(\d)[-－_.](\d{1,2})班?$/);
-  if(m){const g=toN(m[1]),c=toN(m[2]);if(g>=1&&g<=12&&c>=1&&c<=99)return String(g)+String(c).padStart(2,"0")}
-  m=v.match(/^(\d{3,4})班?$/);if(m)return m[1];
-  return v;
-}
-const S={name:"小安",cls:"707",health:100,friend:60,cards:new Set(),tried:false,helpedGpa:false,helpedZhe:false,view:"start",chat:null,sound:true,feedNew:false};
+const S={name:"小安",health:100,friend:60,cards:new Set(),tried:false,helpedGpa:false,helpedZhe:false,view:"start",chat:null,sound:true,feedNew:false};
 const PEOPLE={zhe:{n:"阿哲",av:"zhe"},qing:{n:"小晴",av:"qing"},yu:{n:"宇恩",av:"yu"},lin:{n:"林老師（班導）",av:"lin"},shop:{n:"果果小舖",av:"shop"},mom:{n:"媽媽",av:"mom"},gpa:{n:"阿公",av:"gpa"}};
 const CH={
   class:{name:"707 班級群組",av:"class",group:true,msgs:[],unread:0},
@@ -683,7 +672,6 @@ function setTime(day,t){document.getElementById("clk").textContent=t;S.time=t;S.
 
 /* ================= 導覽 ================= */
 function go(view,arg){
-  if(hintEl)hintEl.classList.toggle("up",view==="home");
   S.view=view;S.chat=view==="chat"?arg:null;
   if(banEl&&banEl._go&&banEl._go[0]===view&&banEl._go[1]===arg){banEl.remove();banEl=null}
   ({home:rHome,list:rList,chat:()=>rChat(arg),feed:rFeed,search:rSearch,book:rBook})[view]();
@@ -700,7 +688,7 @@ V.addEventListener("click",e=>{
   const b=e.target.closest("[data-go]");if(b){const [v,a]=b.dataset.go.split(":");go(v,a);return}
   if(e.target.closest(".msgs")&&skipFn)skipFn();
 });
-function hint(t,k){if(hintEl){hintEl.remove();hintEl=null}if(t){hintEl=document.createElement("div");hintEl.className="hint"+(S.view==="home"?" up":"");hintEl.textContent=t;hintEl._k=k;SCR.appendChild(hintEl)}}
+function hint(t,k){if(hintEl){hintEl.remove();hintEl=null}if(t){hintEl=document.createElement("div");hintEl.className="hint";hintEl.textContent=t;hintEl._k=k;SCR.appendChild(hintEl)}}
 function banner(o){
   if(banEl)banEl.remove();
   const b=document.createElement("button");b.className="banner";b.type="button";b._go=o.go;
@@ -985,13 +973,13 @@ async function main(){
   // ---------- 第 3 天 ----------
   go("home");setTime("週三","17:40");
   await dayCard("DAY 3・週三放學","陌生的私訊","放學路上，手機震了一下。","Dusk");
-  await say("shop","shop",`嗨～你是 ${S.cls} 班的吧？`);
+  await say("shop","shop","嗨～你是 707 班的吧？");
   await say("shop","shop","學生價水果彈團購中 🍇");
   await need("chat:shop","有陌生帳號私訊你");
   await say("shop","shop","包裝像文具，超商取貨，爸媽不會發現喔！");
   await sys("shop","陌生帳號・你們沒有共同好友");
   const BL={t:"封鎖並檢舉",block:true};
-  r=await reply("shop",[{t:`你怎麼知道我是 ${S.cls} 的？`},{t:"一支多少錢？"},BL]);LOG.shop=r.block?"立刻封鎖":"回覆後才封鎖";
+  r=await reply("shop",[{t:"你怎麼知道我是 707 的？"},{t:"一支多少錢？"},BL]);LOG.shop=r.block?"立刻封鎖":"回覆後才封鎖";
   if(!r.block){
     if(r.i===0){await say("shop","shop","你的動態有穿制服、拍到學號啊～");await say("shop","shop","要不要先看看口味？");}
     else{await say("shop","shop","一支 350，先轉 200 訂金幫你留");await say("shop","shop","介紹同學買，再送你一支！");}
@@ -1129,24 +1117,24 @@ function start(){
   setTime("","21:30");S.view="start";
   V.innerHTML=`<div class="start">
     <div class="st-hero ${imgURL("start")?"has-img":""}"${bgStyle("start")}>
-      <span class="lab">國中資訊融合健康教育・互動模擬</span>
-      <h2>誘惑攻防戰</h2>
+      <span class="lab">國一健康教育・互動模擬</span>
+      <h2>誘惑的抵擋</h2>
     </div>
     <div class="st-sheet">
-      <p class="sub">你是國中生。接下來一週，手機會收到很多訊息，每一個回覆都會改變故事的走向。</p>
+      <p class="sub">你是 707 班的新生。接下來一週，手機會收到很多訊息，每一個回覆都會改變故事的走向。</p>
       <div class="srow2">
-        <div><label for="cls">班級</label>${CFG.CLASSES.length?`<select id="cls"><option value="">選擇</option>${CFG.CLASSES.map(c=>`<option>${c}</option>`).join("")}</select>`:`<input id="cls" maxlength="8" placeholder="例如 701" autocomplete="off">`}</div>
+        <div><label for="cls">班級</label>${CFG.CLASSES.length?`<select id="cls"><option value="">選擇</option>${CFG.CLASSES.map(c=>`<option>${c}</option>`).join("")}</select>`:`<input id="cls" maxlength="8" placeholder="例如 701" inputmode="numeric" autocomplete="off">`}</div>
         <div><label for="seat">座號</label><select id="seat"><option value="">選擇</option>${Array.from({length:CFG.MAX_SEAT},(_,i)=>`<option>${i+1}</option>`).join("")}</select></div>
       </div>
-      <div class="st-field"><label for="nick">姓名</label><input id="nick" maxlength="10" placeholder="例如：王小明" autocomplete="off"></div>
-      <p class="note" id="snote">請用真實姓名，約 20 分鐘，建議戴耳機。</p>
+      <div class="st-field"><label for="nick">遊戲裡的暱稱</label><input id="nick" maxlength="6" placeholder="例如：小安" autocomplete="off"></div>
+      <p class="note" id="snote">${CFG.API_URL?"班級、座號和遊戲結果會傳給老師；暱稱請不要用真實姓名。":"暱稱請不要用真實姓名。"}約 20 分鐘，建議戴耳機。</p>
       <button class="pbtn" id="go" type="button">開始</button>
     </div></div>`;
   document.getElementById("go").onclick=()=>{
     const clean=x=>String(x||"").trim().replace(/[<>&"'=]/g,"");
-    const cls=normCls(clean(document.getElementById("cls").value)),seat=clean(document.getElementById("seat").value);
+    const cls=clean(document.getElementById("cls").value),seat=clean(document.getElementById("seat").value);
     if(!cls||!seat){const n=document.getElementById("snote");n.textContent="請先填好班級和座號。";n.style.color="#B23A27";n.style.fontWeight="700";return}
-    S.cls=cls;S.seat=seat;CH.class.name=`${cls} 班級群組`;
+    S.cls=cls;S.seat=seat;
     const v=clean(document.getElementById("nick").value);if(v)S.name=v;
     LOG.t0=Date.now();send("start");
     try{AC=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}
