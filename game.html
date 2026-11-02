@@ -632,7 +632,7 @@ function normCls(v){
   const S={name:"小安",health:100,friend:60,cards:new Set(),tried:false,helpedGpa:false,helpedZhe:false,view:"start",chat:null,sound:true,feedNew:false};
 const PEOPLE={zhe:{n:"阿哲",av:"zhe"},qing:{n:"小晴",av:"qing"},yu:{n:"宇恩",av:"yu"},lin:{n:"林老師（班導）",av:"lin"},shop:{n:"果果小舖",av:"shop"},mom:{n:"媽媽",av:"mom"},gpa:{n:"阿公",av:"gpa"}};
 const CH={
-  class:{name:"707 班級群組",av:"class",group:true,msgs:[],unread:0},
+  class:{name:"班級群組",av:"class",group:true,msgs:[],unread:0},
   zhe:{name:"阿哲",av:"zhe",msgs:[],unread:0},
   shop:{name:"果果小舖",av:"shop",msgs:[],unread:0,stranger:true,blocked:false},
   fam:{name:"溫暖的家（3）",av:"fam",group:true,msgs:[],unread:0}
@@ -982,13 +982,13 @@ async function main(){
   // ---------- 第 3 天 ----------
   go("home");setTime("週三","17:40");
   await dayCard("DAY 3・週三放學","陌生的私訊","放學路上，手機震了一下。","Dusk");
-  await say("shop","shop","嗨～你是 707 班的吧？");
+  await say("shop","shop",`嗨～你是 ${S.cls} 班的吧？`);
   await say("shop","shop","學生價水果彈團購中 🍇");
   await need("chat:shop","有陌生帳號私訊你");
   await say("shop","shop","包裝像文具，超商取貨，爸媽不會發現喔！");
   await sys("shop","陌生帳號・你們沒有共同好友");
   const BL={t:"封鎖並檢舉",block:true};
-  r=await reply("shop",[{t:"你怎麼知道我是 707 的？"},{t:"一支多少錢？"},BL]);LOG.shop=r.block?"立刻封鎖":"回覆後才封鎖";
+  r=await reply("shop",[{t:`你怎麼知道我是 ${S.cls} 的？`},{t:"一支多少錢？"},BL]);LOG.shop=r.block?"立刻封鎖":"回覆後才封鎖";
   if(!r.block){
     if(r.i===0){await say("shop","shop","你的動態有穿制服、拍到學號啊～");await say("shop","shop","要不要先看看口味？");}
     else{await say("shop","shop","一支 350，先轉 200 訂金幫你留");await say("shop","shop","介紹同學買，再送你一支！");}
@@ -1141,9 +1141,9 @@ function start(){
     </div></div>`;
   document.getElementById("go").onclick=()=>{
     const clean=x=>String(x||"").trim().replace(/[<>&"'=]/g,"");
-    const cls=clean(document.getElementById("cls").value),seat=clean(document.getElementById("seat").value);
+    const cls=normCls(clean(document.getElementById("cls").value)),seat=clean(document.getElementById("seat").value);
     if(!cls||!seat){const n=document.getElementById("snote");n.textContent="請先填好班級和座號。";n.style.color="#B23A27";n.style.fontWeight="700";return}
-    S.cls=cls;S.seat=seat;
+    S.cls=cls;S.seat=seat;CH.class.name=`${cls} 班級群組`;
     const v=clean(document.getElementById("nick").value);if(v)S.name=v;
     LOG.t0=Date.now();send("start");
     try{AC=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}
