@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>第一口之前｜教師後台</title>
+<title>誘惑攻防戰｜教師後台</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
@@ -142,7 +142,7 @@ function shell(){
   if(timer)clearInterval(timer);timer=setInterval(()=>load(false),30000);
 }
 
-const COLS=[["cls","班級"],["seat","座號"],["nick","暱稱"],["status","狀態"],["ending","結局"],["health","健康"],["friend","友情"],["cards","知識卡"],["quiz","小考"],["dorm","戶外教育那晚"],["cram","補習班檳榔"],["shop","陌生私訊"],["feedAct","廣告處理"],["minutes","分鐘"],["start","開始時間"]];
+const COLS=[["cls","班級"],["seat","座號"],["nick","姓名"],["status","狀態"],["ending","結局"],["health","健康"],["friend","友情"],["cards","知識卡"],["quiz","小考"],["dorm","戶外教育那晚"],["cram","補習班檳榔"],["shop","陌生私訊"],["feedAct","廣告處理"],["minutes","分鐘"],["start","開始時間"]];
 function cell(r,k){
   if(k==="status")return r.done?`<span class="pill ok">完成</span>`:`<span class="pill no">進行中／未完成</span>`;
   if(k==="dorm"&&r.dorm)return /一口/.test(r.dorm)?`<span class="pill bad">${esc(r.dorm)}</span>`:esc(r.dorm);
@@ -177,11 +177,11 @@ function render(){
 
 function csv(){
   const rows=filtered();
-  const K=[["cls","班級"],["seat","座號"],["nick","暱稱"],["done","狀態"],["ending","結局"],["health","健康"],["friend","友情"],["cards","知識卡"],["quiz","小考答對"],["penGuess","照片猜測"],["thought","第1天想法"],["zheInvite","回覆阿哲邀約"],["feedAct","廣告處理"],["searchWrong","搜尋選錯次數"],["shop","陌生私訊"],["cram","補習班檳榔"],["gpa","回覆阿公"],["dorm","戶外教育那晚"],["tried","曾選一口就好"],["helpedZhe","陪阿哲找大人"],["minutes","遊玩分鐘"],["start","開始時間"]];
+  const K=[["cls","班級"],["seat","座號"],["nick","姓名"],["done","狀態"],["ending","結局"],["health","健康"],["friend","友情"],["cards","知識卡"],["quiz","小考答對"],["penGuess","照片猜測"],["thought","第1天想法"],["zheInvite","回覆阿哲邀約"],["feedAct","廣告處理"],["searchWrong","搜尋選錯次數"],["shop","陌生私訊"],["cram","補習班檳榔"],["gpa","回覆阿公"],["dorm","戶外教育那晚"],["tried","曾選一口就好"],["helpedZhe","陪阿哲找大人"],["minutes","遊玩分鐘"],["start","開始時間"]];
   const q=v=>{let s=String(v==null?"":v);if(/^[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'};
   const lines=[K.map(k=>q(k[1])).join(",")].concat(rows.map(r=>K.map(([k])=>q(k==="done"?(r.done?"完成":"未完成"):r[k])).join(",")));
   const blob=new Blob(["﻿"+lines.join("\r\n")],{type:"text/csv;charset=utf-8"});
-  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`第一口之前紀錄_${F.cls||"全部班級"}.csv`;document.body.appendChild(a);a.click();a.remove();
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`誘惑攻防戰紀錄_${F.cls||"全部班級"}.csv`;document.body.appendChild(a);a.click();a.remove();
 }
 
 if(KEY)load(true);else login();
