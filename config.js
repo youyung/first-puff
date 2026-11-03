@@ -5,7 +5,7 @@ window.GAME_CONFIG = {
 
   // 1. Google Apps Script 部署後得到的「網頁應用程式網址」（結尾是 /exec）
   //    留空 "" 的話，遊戲照樣能玩，只是不會記錄到後台。
-  API_URL: "https://script.google.com/macros/s/AKfycbwX3OP3O885T4JWBOzqjmcp3GCSrnL-9j8Yu1OYVywGR6komid4-3oXzXAYMMxVQ6O_vA/exec",
+  API_URL: "https://script.google.com/macros/s/AKfycbylmm4xesjF1h8LmONt_uOUcvBnu6ZNf9X_cDjPRB5g8wGttVg6zlGu56yLh1QqdibD/exec",
 
   // 2. 班級：目前是 []，學生自己輸入班級（例如 701）。
   //    如果想改成下拉選單，就把班級寫進來，例如 ["701", "702", "703"]。
