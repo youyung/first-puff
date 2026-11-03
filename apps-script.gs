@@ -1,5 +1,5 @@
 /**
- * 第一口之前・後台程式（貼到 Google 試算表的 Apps Script）
+ * 誘惑攻防戰・後台程式（貼到 Google 試算表的 Apps Script）
  *
  * 使用方式請看 README.md 的「設定後台」。
  * 唯一要改的地方：下面的 TEACHER_KEY（教師後台的登入密碼）。
