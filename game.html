@@ -1133,7 +1133,7 @@ function start(){
       <h2>誘惑攻防戰</h2>
     </div>
     <div class="st-sheet">
-      <p class="sub">歡迎來到快樂國中！接下來的一週，你將收到來自同學、朋友和陌生人的各種訊息。面對不同的情境，你會如何選擇？每一個決定，都將影響故事的發展。</p>
+      <p class="sub">你是快樂國中的一名學生。在接下來的一週裡，你將透過手機收到各種訊息，並面臨不同的選擇。你的每一個決定，都可能影響故事接下來的發展。</p>
       <div class="srow2">
         <div><label for="cls">班級</label>${CFG.CLASSES.length?`<select id="cls"><option value="">選擇</option>${CFG.CLASSES.map(c=>`<option>${c}</option>`).join("")}</select>`:`<input id="cls" maxlength="8" placeholder="例如 701" inputmode="numeric" autocomplete="off">`}</div>
         <div><label for="seat">座號</label><select id="seat"><option value="">選擇</option>${Array.from({length:CFG.MAX_SEAT},(_,i)=>`<option>${i+1}</option>`).join("")}</select></div>
