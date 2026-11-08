@@ -1138,8 +1138,14 @@ function start(){
         <div><label for="cls">班級</label>${CFG.CLASSES.length?`<select id="cls"><option value="">選擇</option>${CFG.CLASSES.map(c=>`<option>${c}</option>`).join("")}</select>`:`<input id="cls" maxlength="8" placeholder="例如 701" inputmode="numeric" autocomplete="off">`}</div>
         <div><label for="seat">座號</label><select id="seat"><option value="">選擇</option>${Array.from({length:CFG.MAX_SEAT},(_,i)=>`<option>${i+1}</option>`).join("")}</select></div>
       </div>
-      <div class="st-field"><label for="nick">遊戲裡的名稱</label><input id="nick" maxlength="6" placeholder="例如：小安" autocomplete="off"></div>
-      <p class="note" id="snote">${CFG.API_URL?"班級、座號和遊戲結果會傳給老師；請用真實姓名。":"請用真實姓名。"}約 20 分鐘，建議戴耳機。</p>
+      <div class="st-field"><label for="nick">姓名</label><input id="nick" maxlength="6" placeholder="例如：小安" autocomplete="off"></div>
+     
+<p class="note">${CFG.API_URL
+  ? "請填寫正確的班級、座號及真實姓名，以便老師確認你的遊戲結果。"
+  : "請填寫正確的班級、座號及真實姓名。"
+}遊戲時間約 20 分鐘，建議配戴耳機，以獲得更完整的遊戲體驗。</p>
+<button class="pbtn" id="go" type="button">開始</button>
+
       <button class="pbtn" id="go" type="button">開始</button>
     </div></div>`;
   document.getElementById("go").onclick=()=>{
